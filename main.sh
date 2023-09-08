@@ -11,9 +11,9 @@ fi
 
 items_origin="$(echo $TMUX_FZF_ORDER | tr '|' '\n')"
 if [[ -z "$TMUX_FZF_MENU" ]]; then
-    item=$(printf "%s\n[cancel]" "$items_origin" | eval "$TMUX_FZF_BIN $TMUX_FZF_OPTIONS")
+    item=$(printf "%s\n[cancel]" "$items_origin" | eval "$TMUX_FZF_BIN $TMUX_FZF_OPTIONS $TMUX_FZF_PREVIEW_OPTIONS")
 else
-    item=$(printf "menu\n%s\n[cancel]" "$items_origin" | eval "$TMUX_FZF_BIN $TMUX_FZF_OPTIONS")
+    item=$(printf "menu\n%s\n[cancel]" "$items_origin" | eval "$TMUX_FZF_BIN $TMUX_FZF_OPTIONS $TMUX_FZF_PREVIEW_OPTIONS")
 fi
 [[ "$item" == "[cancel]" || -z "$item" ]] && exit
 item=$(echo "$CURRENT_DIR/scripts/$item" | sed -E 's/$/.sh/')
